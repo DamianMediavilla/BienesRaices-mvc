@@ -1,0 +1,49 @@
+<?php
+namespace MVC;
+use Controllers\PropiedadControlador;
+
+class Router{
+    
+    public $rutasGET = [];
+    public $rutasPOST = [];
+    
+    public function get($url, $function){
+        $this->rutasGET[$url]=$function;
+    }
+    public function post($url, $function){
+        $this->rutasPOST[$url]=$function;
+    }
+
+    public function comprobarRutas()
+    {
+        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        $metodo = $_SERVER['REQUEST_METHOD'];
+        if ($metodo === 'GET'){
+            $function = $this->rutasGET[$urlActual] ?? null ;
+        } else if ($metodo === 'POST'){
+            $function = $this->rutasPOST[$urlActual] ?? null ;
+
+        }
+        if ($function){
+           //debuguear($function);
+            //se comprobó la ruta y se conoce la funcion
+            call_user_func($function, $this);
+        } else{
+            echo "pagina no encontrada";
+        }
+
+    }
+    public function render($view, $datos=[]){
+        foreach($datos as $key => $value){
+            $$key = $value;
+        }
+        ob_start();
+
+        include __DIR__ . "/views/$view.php";
+
+        $contenido= ob_get_clean();
+
+        include __DIR__ . "/views/layout.php";
+
+    }
+}
