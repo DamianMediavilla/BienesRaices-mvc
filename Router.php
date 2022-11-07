@@ -15,8 +15,9 @@ class Router{
     }
 
     public function comprobarRutas()
-    {
-        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+    {//URLACTUAL DEPENDE DEL LOCAL O REMOTO
+        //$urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        $urlActual = $_SERVER['REQUEST_URI'] === '' ? '/' :  $_SERVER['REQUEST_URI'];
         $metodo = $_SERVER['REQUEST_METHOD'];
         if ($metodo === 'GET'){
             $function = $this->rutasGET[$urlActual] ?? null ;

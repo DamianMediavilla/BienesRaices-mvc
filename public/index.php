@@ -41,7 +41,6 @@ $router->post('/login', [LoginControlador::class, 'login']);
 $router->get('/logout', [LoginControlador::class, 'logout']);
 
 
-
 $router->comprobarRutas();
 
 ?>
