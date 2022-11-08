@@ -71,7 +71,7 @@
                         <input type="submit" class="boton boton-rojo" value="Eliminar">
                     </form>
                     
-                    <a href="vendedores/actualizar?id=<?php echo $vendedor->idvendedores; ?>" class="boton boton-amarillo">Actualizar</a>
+                    <a href="admin/vendedores/actualizar?id=<?php echo $vendedor->idvendedores; ?>" class="boton boton-amarillo">Actualizar</a>
                 </td>
             </tr>
             <?php endforeach; ?>

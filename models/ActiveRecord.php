@@ -225,7 +225,6 @@ class ActiveRecord {
         // Eliminar el registro
         $query = "DELETE FROM "  . static::$tabla . " WHERE ". self::$columnasDB[0] . " =  " . $this->idProp . "  LIMIT 1";
         $resultado = self::$db->query($query);
-        echo $query;
 
         if($resultado) {
             $this->borrarImagen();

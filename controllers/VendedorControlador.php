@@ -52,6 +52,7 @@ class VendedorControlador {
     }
 
     public static function actualizar(Router $router) {
+
         $id = validarORedireccionar('/admin');
 
         // Obtener los datos de la propiedad

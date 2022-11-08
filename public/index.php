@@ -24,6 +24,8 @@ $router->post('/admin/propiedades/actualizar', [PropiedadControlador::class, 'ac
 $router->get('/admin/vendedores/admin', [VendedorControlador::class, 'index']);
 $router->get('/admin/vendedores/crear', [VendedorControlador::class, 'crear']);
 $router->post('/admin/vendedores/crear', [VendedorControlador::class, 'crear']);
+$router->get('/admin/vendedores/actualizar', [VendedorControlador::class, 'actualizar']);
+$router->post('/admin/vendedores/actualizar', [VendedorControlador::class, 'actualizar']);
 
 //Rutas publicas
 $router->get('/', [PaginasControlador::class, 'index']);

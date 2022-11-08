@@ -84,6 +84,7 @@ class PropiedadControlador {
         
     }
     public static function actualizar(Router $router) {
+        var_dump('sarasa');
         $id = validarORedireccionar('/admin');
 
         $propiedad = ModelPropiedad::buscaId($id);
