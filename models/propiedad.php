@@ -8,7 +8,6 @@ class Propiedad extends ActiveRecord {
     protected static $tabla = 'propiedades';
     protected static $columnasDB = ['idProp', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones', 'toilet', 'garage', 'creado', 'vendedorId'];
 
-
     public $idProp;
     public $titulo;
     public $precio;

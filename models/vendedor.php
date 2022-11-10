@@ -31,7 +31,6 @@ class Vendedor extends ActiveRecord{
         if(!$this->telefono) {
             self::$errores[] = "El Teléfono es Obligatorio";
         }
-
         return self::$errores;
     }
 };
