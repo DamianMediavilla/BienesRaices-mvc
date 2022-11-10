@@ -13,7 +13,8 @@ use PHPMailer\PHPMailer\Exception;
 class PaginasControlador {
     public static function index( Router $router ) {
 
-        $propiedades = ModelPropiedad::get(3);
+        //$propiedades = ModelPropiedad::get(3);
+        $propiedades = null;
 
         $router->render('paginas/index', [
             'inicio' => true,
