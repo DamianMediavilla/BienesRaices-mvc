@@ -15,6 +15,7 @@ class PaginasControlador {
 
         $propiedades = ModelPropiedad::get(3);
         //$propiedades = null;
+        
 
         $router->render('paginas/index', [
             'inicio' => true,
