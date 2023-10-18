@@ -33,4 +33,25 @@ class Vendedor extends ActiveRecord{
         }
         return self::$errores;
     }
+    public function guardar(){
+        
+
+        
+        $query = "INSERT INTO " . static::$tabla . " (nombre, apellido, telefono) VALUES ('$this->nombre', '$this->apellido', '$this->telefono')";
+        
+        $resultado = self::$db->query($query);
+
+        return $resultado;
+
+
+
+    }
+    public function eliminar() {
+        // Eliminar el registro
+        $query = "DELETE FROM "  . static::$tabla . " WHERE ". self::$columnasDB[0] . " =  " . $this->idvendedores . "  LIMIT 1";
+        $resultado = self::$db->query($query);
+
+        
+        return $resultado;
+    }
 };

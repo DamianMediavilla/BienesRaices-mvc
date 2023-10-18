@@ -9,10 +9,15 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PropiedadControlador {
     public static function admin(Router $router) {
+        estaAutenticado();
         if($_SERVER['REQUEST_METHOD']==='POST'){
             if ($_POST['tipo']==='propiedad'){
                 $propiedad = ModelPropiedad::buscaId($_POST['id']);
                 $propiedad->eliminar();
+            }
+            if ($_POST['tipo']==='vendedor'){
+                $vendedor = ModelVendedor::buscaId($_POST['id']);
+                $vendedor->eliminar();
             }
         }
         $propiedades = ModelPropiedad::All();
@@ -30,6 +35,8 @@ class PropiedadControlador {
         
     }
     public static function crear(Router $router){
+        estaAutenticado();
+        
         $propiedades = ModelPropiedad::All();
         $resultado = null;
         $errores = [];
@@ -84,7 +91,7 @@ class PropiedadControlador {
         
     }
     public static function actualizar(Router $router) {
-        var_dump('sarasa');
+        estaAutenticado();
         $id = validarORedireccionar('/admin');
 
         $propiedad = ModelPropiedad::buscaId($id);
@@ -123,7 +130,7 @@ class PropiedadControlador {
                     header('location: /admin');
                 }
             }
-    }
+        }
         
         $router->render("propiedades/actualizar", [
             'propiedad' => $propiedad,

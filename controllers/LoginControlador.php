@@ -22,12 +22,14 @@ class LoginControlador {
      
                 
                 if( !$resultado ) {
+                    //no se encuentra usuario
                     $errores = Admin::getErrores();
                 } else {
+                    //encontrado el usuario, verifica pass
 
-                    $auth->comprobarPassword($resultado);
+                    
 
-                    if($auth->autenticado) {
+                    if($auth->comprobarPassword($resultado)) {
                        $auth->autenticar();
                     } else {
                         $errores =Admin::getErrores();

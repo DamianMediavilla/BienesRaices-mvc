@@ -16,9 +16,9 @@ class Router{
 
     public function comprobarRutas()
     {//URLACTUAL DEPENDE DEL LOCAL O REMOTO
-        //$urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
         //$rutasprotegidas=['/admin', '/admin/propiedades/crear', '/admin/propiedades/actualizar','/admin/vendedores/admin','/admin/vendedores/crear' ,'/admin/vendedores/actualizar'];
-        $urlActual = $_SERVER['REQUEST_URI'] === '' ? '/' :  $_SERVER['REQUEST_URI'];
+        //$urlActual = $_SERVER['REQUEST_URI'] === '' ? '/' :  $_SERVER['REQUEST_URI'];
         $metodo = $_SERVER['REQUEST_METHOD'];
         if ($metodo === 'GET'){
             $function = $this->rutasGET[$urlActual] ?? null ;

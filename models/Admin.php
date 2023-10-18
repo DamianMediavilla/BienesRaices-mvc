@@ -11,6 +11,7 @@ class Admin extends ActiveRecord {
     public $id;
     public $email;
     public $password;
+    protected $autenticado;
 
     public function __construct($args = [])
     {
@@ -44,13 +45,17 @@ class Admin extends ActiveRecord {
 
     public function comprobarPassword($resultado) {
         $usuario = $resultado->fetch_object();
+        
+        
 
         $this->autenticado = password_verify( $this->password, $usuario->password );
 
         if(!$this->autenticado) {
             self::$errores[] = 'El Password es Incorrecto';
-            return;
-        } 
+            return false;
+        } else{
+            return true;
+        }
     }
 
     public function autenticar() {

@@ -9,6 +9,7 @@ use MVC\Router;
 class VendedorControlador {
        
     public static function index(Router $router) {
+        estaAutenticado();
         $vendedores = ModelVendedor::all();
 
         // Muestra mensaje condicional
@@ -21,6 +22,18 @@ class VendedorControlador {
     }
 
     public static function crear(Router $router) {
+        estaAutenticado();
+        // echo "<pre>";
+        // var_dump($_SERVER);
+        // echo "</pre>";
+        // echo "<pre>";
+        // var_dump($_SERVER['PATH_INFO']);
+        // echo "</pre>";
+        // echo "<pre>";
+        // var_dump($_SERVER['REQUEST_URI']);
+        // echo "</pre>";
+        // debuguear($_SERVER['REQUEST_METHOD']);
+        
         $errores = ModelVendedor::getErrores();
         $vendedor = new ModelVendedor;
 
@@ -38,9 +51,10 @@ class VendedorControlador {
 
                 // Guarda en la base de datos
                 $resultado = $vendedor->guardar();
+                
 
                 if($resultado) {
-                    header('location: /vendedores');
+                    header('location: /admin');
                 }
             }
         }
@@ -52,6 +66,9 @@ class VendedorControlador {
     }
 
     public static function actualizar(Router $router) {
+        estaAutenticado();
+        
+
 
         $id = validarORedireccionar('/admin');
 

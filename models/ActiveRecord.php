@@ -113,7 +113,7 @@ class ActiveRecord {
     }
     
     public static function get($limite) {
-        $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limite}";
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT " . $limite;
 
         $resultado = self::consultarSQL($query);
 
@@ -162,7 +162,7 @@ class ActiveRecord {
        // Subida de archivos
     public function setImagen($imagen) {
         // Elimina la imagen previa
-        if( !is_null($this->id) ) {
+        if( !is_null($this->idProp) ) {
             $this->borrarImagen();
         }
         // Asignar al atributo de imagen el nombre de la imagen
